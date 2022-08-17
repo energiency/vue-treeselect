@@ -1,11 +1,11 @@
 {
-  "name": "@riophae/vue-treeselect",
+  "name": "@energiency/vue-treeselect",
   "version": "0.4.0",
   "description": "A multi-select component with nested options support for Vue.js",
-  "author": "Riophae Lee <riophaelee@gmail.com>",
+  "author": "Energiency <dev@energiency.com>",
   "license": "MIT",
   "homepage": "https://vue-treeselect.js.org/",
-  "repository": "riophae/vue-treeselect",
+  "repository": "energiency/vue-treeselect",
   "main": "dist/vue-treeselect.cjs.js",
   "unpkg": "dist/vue-treeselect.umd.min.js",
   "css": "dist/vue-treeselect.min.css",
@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "dev": "node build/dev-server.js",
-    "build-library": "node build/build-library.js",
+    "build": "node build/build-library.js",
     "build-docs": "rimraf gh-pages && mkdir gh-pages && node build/build-docs.js",
     "preview-docs": "http-server gh-pages",
     "gh-pages": "npm run build-docs && gh-pages --dist gh-pages --branch gh-pages --dotfiles",
@@ -28,7 +28,7 @@
     "lint:css": "stylelint '**/*.less'",
     "lint": "npm run lint:js && npm run lint:css",
     "verify-builds": "size-limit && node build/verify-builds.js",
-    "finish": "npm test && npm run build-library && npm run verify-builds"
+    "finish": "npm test && npm run build && npm run verify-builds"
   },
   "pre-commit": "lint",
   "dependencies": {
@@ -46,6 +46,7 @@
     "@babel/plugin-syntax-jsx": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.3.1",
+    "@semantic-release/git": "^10.0.1",
     "@size-limit/preset-big-lib": "^2.0.2",
     "@vue/test-utils": "1.0.0-beta.16",
     "autoprefixer": "^9.4.6",
@@ -101,6 +102,7 @@
     "rimraf": "^3.0.0",
     "run-series": "^1.1.8",
     "script-loader": "^0.7.2",
+    "semantic-release": "^19.0.3",
     "shallow-equal": "^1.0.0",
     "shelljs": "^0.8.1",
     "string.prototype.repeat": "^0.2.0",
@@ -140,5 +142,16 @@
     "control",
     "input",
     "ui"
-  ]
+  ],
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
