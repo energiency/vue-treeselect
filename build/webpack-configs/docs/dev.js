@@ -19,7 +19,6 @@ module.exports = merge(require("./base"), {
 
   module: {
     rules: [
-      utils.eslintLoader("src"),
       utils.styleLoaders({
         sourceMap: false,
       }),

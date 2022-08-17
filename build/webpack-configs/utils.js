@@ -1,18 +1,7 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const resolve = (exports.resolve = (dir) => path.join(__dirname, "../..", dir));
-
-exports.eslintLoader = (dir) => ({
-  test: /\.(js|vue)$/,
-  loader: "eslint-loader",
-  enforce: "pre",
-  include: [resolve(dir)],
-  options: {
-    formatter: require("eslint-friendly-formatter"),
-    cache: true,
-  },
-});
+exports.resolve = (dir) => path.join(__dirname, "../..", dir);
 
 exports.styleLoaders = (options = {}) => {
   const loaders = [
