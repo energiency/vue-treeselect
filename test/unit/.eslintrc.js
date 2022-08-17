@@ -1,8 +1,8 @@
 module.exports = {
   env: {
-    jasmine: true,
+    node: true,
   },
   rules: {
-    'node/no-unpublished-import': 0,
+    "node/no-unpublished-import": 0,
   },
-}
+};
