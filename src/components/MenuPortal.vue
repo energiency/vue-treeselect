@@ -126,7 +126,7 @@ const PortalTarget = {
     },
   },
 
-  render() {
+  render(h) {
     const { instance } = this;
     const portalTargetClass = [
       "vue-treeselect__portal-target",
@@ -188,7 +188,7 @@ export default {
     },
   },
 
-  render() {
+  render(h) {
     if (!placeholder)
       placeholder = <div class="vue-treeselect__menu-placeholder" />;
 

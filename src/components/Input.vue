@@ -294,7 +294,7 @@ export default {
     },
   },
 
-  render() {
+  render(h) {
     return this.renderInputContainer();
   },
 };

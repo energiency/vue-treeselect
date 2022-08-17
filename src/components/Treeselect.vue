@@ -28,7 +28,7 @@ export default {
     },
   },
 
-  render() {
+  render(h) {
     return (
       <div ref="wrapper" class={this.wrapperClass}>
         <HiddenFields />

@@ -326,7 +326,7 @@ export default {
     },
   },
 
-  render() {
+  render(h) {
     return (
       <div
         ref="menu-container"

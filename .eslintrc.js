@@ -40,6 +40,7 @@ module.exports = {
     "no-warning-comments": 0,
     "no-undefined": 0,
     "prefer-destructuring": 0,
+    "no-unused-vars": ["error", { argsIgnorePattern: "h" }],
   },
   overrides: [
     {
