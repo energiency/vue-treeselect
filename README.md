@@ -1,4 +1,5 @@
 # vue-treeselect
+
 [![npm](https://badgen.now.sh/npm/v/@riophae/vue-treeselect)](https://www.npmjs.com/package/@riophae/vue-treeselect) [![Build](https://badgen.now.sh/circleci/github/riophae/vue-treeselect)](https://circleci.com/gh/riophae/vue-treeselect/tree/master) [![Coverage](https://badgen.net/codecov/c/github/riophae/vue-treeselect)](https://codecov.io/gh/riophae/vue-treeselect?branch=master)
 ![npm monthly downloads](https://badgen.now.sh/npm/dm/@riophae/vue-treeselect)
 ![jsDelivr monthly hits](https://badgen.net/jsdelivr/hits/npm/@riophae/vue-treeselect) [![Known vulnerabilities](https://snyk.io/test/npm/@riophae/vue-treeselect/badge.svg)](https://snyk.io/test/npm/@riophae/vue-treeselect) ![License](https://badgen.net/github/license/riophae/vue-treeselect)
@@ -18,7 +19,7 @@
 - Supports a wide range of browsers (see [below](#browser-compatibility))
 - RTL support
 
-*Requires Vue 2.2+*
+_Requires Vue 2.2+_
 
 ### Getting Started
 
@@ -39,39 +40,46 @@ This example shows how to integrate vue-treeselect with your [Vue SFCs](https://
 </template>
 
 <script>
-  // import the component
-  import Treeselect from '@riophae/vue-treeselect'
-  // import the styles
-  import '@riophae/vue-treeselect/dist/vue-treeselect.css'
+// import the component
+import Treeselect from "@riophae/vue-treeselect";
+// import the styles
+import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 
-  export default {
-    // register the component
-    components: { Treeselect },
-    data() {
-      return {
-        // define the default value
-        value: null,
-        // define options
-        options: [ {
-          id: 'a',
-          label: 'a',
-          children: [ {
-            id: 'aa',
-            label: 'aa',
-          }, {
-            id: 'ab',
-            label: 'ab',
-          } ],
-        }, {
-          id: 'b',
-          label: 'b',
-        }, {
-          id: 'c',
-          label: 'c',
-        } ],
-      }
-    },
-  }
+export default {
+  // register the component
+  components: { Treeselect },
+  data() {
+    return {
+      // define the default value
+      value: null,
+      // define options
+      options: [
+        {
+          id: "a",
+          label: "a",
+          children: [
+            {
+              id: "aa",
+              label: "aa",
+            },
+            {
+              id: "ab",
+              label: "ab",
+            },
+          ],
+        },
+        {
+          id: "b",
+          label: "b",
+        },
+        {
+          id: "c",
+          label: "c",
+        },
+      ],
+    };
+  },
+};
 </script>
 ```
 
@@ -84,7 +92,10 @@ If you just don't want to use webpack or any other bundlers, you can simply incl
     <script src="https://cdn.jsdelivr.net/npm/vue@^2"></script>
     <!-- include vue-treeselect & its styles. you can change the version tag to better suit your needs. -->
     <script src="https://cdn.jsdelivr.net/npm/@riophae/vue-treeselect@^0.4.0/dist/vue-treeselect.umd.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@riophae/vue-treeselect@^0.4.0/dist/vue-treeselect.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@riophae/vue-treeselect@^0.4.0/dist/vue-treeselect.min.css"
+    />
   </head>
   <body>
     <div id="app">
@@ -93,33 +104,40 @@ If you just don't want to use webpack or any other bundlers, you can simply incl
   </body>
   <script>
     // register the component
-    Vue.component('treeselect', VueTreeselect.Treeselect)
+    Vue.component("treeselect", VueTreeselect.Treeselect);
 
     new Vue({
-      el: '#app',
+      el: "#app",
       data: {
         // define the default value
         value: null,
         // define options
-        options: [ {
-          id: 'a',
-          label: 'a',
-          children: [ {
-            id: 'aa',
-            label: 'aa',
-          }, {
-            id: 'ab',
-            label: 'ab',
-          } ],
-        }, {
-          id: 'b',
-          label: 'b',
-        }, {
-          id: 'c',
-          label: 'c',
-        } ],
+        options: [
+          {
+            id: "a",
+            label: "a",
+            children: [
+              {
+                id: "aa",
+                label: "aa",
+              },
+              {
+                id: "ab",
+                label: "ab",
+              },
+            ],
+          },
+          {
+            id: "b",
+            label: "b",
+          },
+          {
+            id: "c",
+            label: "c",
+          },
+        ],
       },
-    })
+    });
   </script>
 </html>
 ```
@@ -159,11 +177,11 @@ This project is inspired by [vue-multiselect](https://github.com/monterail/vue-m
 
 Some icons used in this project:
 
-  - "link" icon made by [Smashicons](https://www.flaticon.com/authors/smashicons) is licensed under [CC 3.0 BY](https://creativecommons.org/licenses/by/3.0/)
-  - "spinner" icon from [SpinKit](https://github.com/tobiasahlin/SpinKit) is licensed under the [MIT License](https://github.com/tobiasahlin/SpinKit/blob/master/LICENSE)
-  - "caret" icon made by [Dave Gandy](https://www.flaticon.com/authors/dave-gandy) is licensed under [CC 3.0 BY](https://creativecommons.org/licenses/by/3.0/)
-  - "delete" icon made by [Freepik](https://www.flaticon.com/authors/freepik) is licensed under [CC 3.0 BY](https://creativecommons.org/licenses/by/3.0/)
-  - "checkmark symbol" & "minus symbol" icons made by [Catalin Fertu](https://www.flaticon.com/authors/catalin-fertu) are licensed under [CC 3.0 BY](https://creativecommons.org/licenses/by/3.0/)
+- "link" icon made by [Smashicons](https://www.flaticon.com/authors/smashicons) is licensed under [CC 3.0 BY](https://creativecommons.org/licenses/by/3.0/)
+- "spinner" icon from [SpinKit](https://github.com/tobiasahlin/SpinKit) is licensed under the [MIT License](https://github.com/tobiasahlin/SpinKit/blob/master/LICENSE)
+- "caret" icon made by [Dave Gandy](https://www.flaticon.com/authors/dave-gandy) is licensed under [CC 3.0 BY](https://creativecommons.org/licenses/by/3.0/)
+- "delete" icon made by [Freepik](https://www.flaticon.com/authors/freepik) is licensed under [CC 3.0 BY](https://creativecommons.org/licenses/by/3.0/)
+- "checkmark symbol" & "minus symbol" icons made by [Catalin Fertu](https://www.flaticon.com/authors/catalin-fertu) are licensed under [CC 3.0 BY](https://creativecommons.org/licenses/by/3.0/)
 
 ### License
 

@@ -1,5 +1,8 @@
 module.exports = {
-  rules: {
-    'import/order': 0,
+  env: {
+    node: true,
   },
-}
+  rules: {
+    "import/order": 0,
+  },
+};
