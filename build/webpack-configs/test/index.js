@@ -8,7 +8,7 @@ module.exports = merge(baseWebpackConfig, {
   mode: "development",
 
   module: {
-    rules: [utils.eslintLoader("test"), utils.styleLoaders()],
+    rules: [utils.styleLoaders()],
   },
 
   devtool: false,
