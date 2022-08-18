@@ -7,7 +7,7 @@ import { generateOptions } from "../utils";
 
 export default {
   data: () => ({
-    options: generateOptions(5, 5),
+    options: Object.freeze(generateOptions(2, 200)),
   }),
 };
 </script>

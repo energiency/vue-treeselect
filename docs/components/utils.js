@@ -40,5 +40,5 @@ export function generateOptions(maxLevel, itemsPerLevel = maxLevel) {
       return option;
     });
 
-  return generate("");
+  return generate("", 1);
 }
