@@ -660,6 +660,14 @@ export default {
     },
 
     /**
+     * Whether to enable node virtualization.
+     */
+    virtualScroll: {
+      type: Boolean,
+      default: false,
+    },
+
+    /**
      * z-index of the menu.
      */
     zIndex: {
@@ -686,6 +694,10 @@ export default {
         lastScrollPosition: 0,
         // Which direction to open the menu.
         placement: "bottom",
+        // <id, boolean> map of all rendered nodes.
+        visibleNodes: createMap(),
+        // Number of options to render.
+        nbVisibleOptions: 20,
       },
 
       forest: {
@@ -820,6 +832,12 @@ export default {
 
       return visibleOptionIds;
     },
+    renderedVisibleOptionIds() {
+      if (this.visibleOptionIds.length <= this.menu.nbVisibleOptions) {
+        return this.visibleOptionIds;
+      }
+      return this.visibleOptionIds.slice(0, this.menu.nbVisibleOptions);
+    },
     /**
      * Has any option should be displayed in the menu?
      * @type {boolean}
@@ -924,6 +942,16 @@ export default {
       const nodeIdsFromValue = this.extractCheckedNodeIdsFromValue();
       const hasChanged = quickDiff(nodeIdsFromValue, this.internalValue);
       if (hasChanged) this.fixSelectedNodeIds(nodeIdsFromValue);
+    },
+
+    renderedVisibleOptionIds: {
+      handler(newValue) {
+        const visibleNodes = this.$set(this.menu, "visibleNodes", createMap());
+        newValue.forEach((id) => {
+          this.$set(visibleNodes, id, true);
+        });
+      },
+      immediate: true,
     },
   },
 
@@ -1287,6 +1315,7 @@ export default {
 
       // Reset states.
       this.localSearch.noResults = true;
+      this.menu.nbVisibleOptions = 20;
       this.traverseAllNodesDFS((node) => {
         if (node.isBranch) {
           node.isExpandedOnSearch = false;
@@ -2114,6 +2143,10 @@ export default {
       const $menu = this.getMenu();
       // istanbul ignore else
       if ($menu) $menu.scrollTop = this.menu.lastScrollPosition;
+    },
+
+    viewMoreNodes() {
+      this.menu.nbVisibleOptions += 20;
     },
   },
 

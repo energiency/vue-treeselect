@@ -3,6 +3,7 @@ import { MENU_BUFFER } from "../constants";
 import { watchSize, setupResizeAndScrollEventListeners } from "../utils";
 import Option from "./Option";
 import Tip from "./Tip";
+import IntersectionObserver from "./IntersectionObserver.vue";
 
 const directionMap = {
   top: "top",
@@ -78,6 +79,7 @@ export default {
             : instance.localSearch.active
             ? this.renderLocalSearchMenuInner()
             : this.renderNormalMenuInner()}
+          {!instance.async && this.renderIntersectionObserver()}
           {this.renderAfterList()}
         </div>
       );
@@ -155,14 +157,28 @@ export default {
       }
     },
 
+    renderIntersectionObserver() {
+      const { instance } = this;
+      return (
+        <IntersectionObserver
+          class="vue-treeselect__intersection-observer"
+          onIntersection={instance.viewMoreNodes}
+        />
+      );
+    },
+
     renderOptionList() {
       const { instance } = this;
 
       return (
         <div class="vue-treeselect__list">
-          {instance.forest.normalizedOptions.map((rootNode) => (
-            <Option node={rootNode} key={rootNode.id} />
-          ))}
+          {instance.forest.normalizedOptions.map(
+            (rootNode) =>
+              (!instance.virtualScroll ||
+                instance.menu.visibleNodes[rootNode.id]) && (
+                <Option node={rootNode} key={rootNode.id} />
+              )
+          )}
         </div>
       );
     },

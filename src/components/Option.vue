@@ -122,13 +122,16 @@ function renderSubOptionsList(h, context) {
 }
 
 const renderSubOptions = (h, context) => {
-  const { node } = parseContext(context);
+  const { instance, node } = parseContext(context);
 
   if (!node.childrenStates.isLoaded) return null;
 
-  return node.children.map((childNode) => (
-    <Option node={childNode} key={childNode.id} />
-  ));
+  return node.children.map(
+    (childNode) =>
+      (!instance.virtualScroll || instance.menu.visibleNodes[childNode.id]) && (
+        <Option node={childNode} key={childNode.id} />
+      )
+  );
 };
 
 const renderOption = (h, context) => {
