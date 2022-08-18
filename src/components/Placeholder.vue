@@ -3,7 +3,7 @@ export default {
   name: "vue-treeselect--placeholder",
   inject: ["instance"],
 
-  render(h) {
+  render() {
     const { instance } = this;
     const placeholderClass = {
       "vue-treeselect__placeholder": true,

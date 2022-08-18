@@ -121,20 +121,18 @@ function renderSubOptionsList(h, context) {
   );
 }
 
-function renderSubOptions(h, { props }) {
-  const { node } = props;
+const renderSubOptions = (h, context) => {
+  const { node } = parseContext(context);
 
   if (!node.childrenStates.isLoaded) return null;
 
   return node.children.map((childNode) => (
     <Option node={childNode} key={childNode.id} />
   ));
-}
+};
 
-function renderOption(h, context) {
-  const { props, injections } = context;
-  const { node } = props;
-  const { instance } = injections;
+const renderOption = (h, context) => {
+  const { instance, node } = parseContext(context);
   const optionClass = {
     "vue-treeselect__option": true,
     "vue-treeselect__option--disabled": node.isDisabled,
@@ -162,7 +160,7 @@ function renderOption(h, context) {
       ])}
     </div>
   );
-}
+};
 
 function renderLabel(h, { props, injections }) {
   const { node } = props;

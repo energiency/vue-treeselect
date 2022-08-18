@@ -142,7 +142,7 @@ export default {
     },
   },
 
-  render(h) {
+  render() {
     const { instance } = this;
     const ValueContainer = instance.single ? SingleValue : MultiValue;
 

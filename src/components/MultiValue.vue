@@ -38,7 +38,7 @@ export default {
     },
   },
 
-  render(h) {
+  render() {
     const { renderValueContainer } = this.$parent;
     const transitionGroupProps = {
       props: {

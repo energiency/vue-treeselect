@@ -16,7 +16,7 @@ export default {
         : node.label;
     },
   },
-  render(h) {
+  render() {
     const {
       instance,
       $parent: { renderValueContainer },

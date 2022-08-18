@@ -1306,6 +1306,7 @@ export default {
       const splitSearchQuery = lowerCasedSearchQuery
         .replace(/\s+/g, " ")
         .split(" ");
+
       this.traverseAllNodesDFS((node) => {
         if (this.searchNested && splitSearchQuery.length > 1) {
           node.isMatched = splitSearchQuery.every((filterValue) =>
@@ -1323,20 +1324,25 @@ export default {
 
         if (node.isMatched) {
           this.localSearch.noResults = false;
-          node.ancestors.forEach(
-            (ancestor) =>
-              this.localSearch.countMap[ancestor.id][ALL_DESCENDANTS]++
-          );
-          if (node.isLeaf)
+
+          if (this.showCountOnSearchComputed) {
             node.ancestors.forEach(
               (ancestor) =>
-                this.localSearch.countMap[ancestor.id][LEAF_DESCENDANTS]++
+                this.localSearch.countMap[ancestor.id][ALL_DESCENDANTS]++
             );
-          if (node.parentNode !== NO_PARENT_NODE) {
-            this.localSearch.countMap[node.parentNode.id][ALL_CHILDREN] += 1;
-            // istanbul ignore else
             if (node.isLeaf)
-              this.localSearch.countMap[node.parentNode.id][LEAF_CHILDREN] += 1;
+              node.ancestors.forEach(
+                (ancestor) =>
+                  this.localSearch.countMap[ancestor.id][LEAF_DESCENDANTS]++
+              );
+            if (node.parentNode !== NO_PARENT_NODE) {
+              this.localSearch.countMap[node.parentNode.id][ALL_CHILDREN] += 1;
+              // istanbul ignore else
+              if (node.isLeaf)
+                this.localSearch.countMap[node.parentNode.id][
+                  LEAF_CHILDREN
+                ] += 1;
+            }
           }
         }
 

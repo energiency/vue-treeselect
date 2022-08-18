@@ -22,7 +22,7 @@ export default {
     }),
   },
 
-  render(h) {
+  render() {
     const { instance, node } = this;
     const itemClass = {
       "vue-treeselect__multi-value-item": true,
