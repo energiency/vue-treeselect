@@ -919,6 +919,10 @@ export default {
         // Re-initialize options when the `options` prop has changed.
         this.initialize();
         this.rootOptionsStates.isLoaded = Array.isArray(this.options);
+
+        if (this.localSearch.active && !this.clearOnSelect) {
+          this.handleLocalSearch();
+        }
       },
       deep: true,
       immediate: true,
