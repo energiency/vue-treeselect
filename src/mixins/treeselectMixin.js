@@ -919,10 +919,6 @@ export default {
         // Re-initialize options when the `options` prop has changed.
         this.initialize();
         this.rootOptionsStates.isLoaded = Array.isArray(this.options);
-
-        if (this.localSearch.active && !this.clearOnSelect) {
-          this.handleLocalSearch();
-        }
       },
       deep: true,
       immediate: true,
@@ -1028,6 +1024,14 @@ export default {
         this.fixSelectedNodeIds(this.internalValue);
       } else {
         this.forest.normalizedOptions = [];
+      }
+
+      if (this.trigger.searchQuery && !this.clearOnSelect) {
+        if (this.async) {
+          this.handleRemoteSearch();
+        } else {
+          this.handleLocalSearch();
+        }
       }
     },
 
@@ -1442,7 +1446,9 @@ export default {
         () => entry.options,
         () => {
           // TODO: potential redundant re-initialization.
-          if (this.trigger.searchQuery === searchQuery) this.initialize();
+          if (this.trigger.searchQuery === searchQuery) {
+            this.initialize();
+          }
         },
         { deep: true }
       );
