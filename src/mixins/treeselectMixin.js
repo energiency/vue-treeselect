@@ -1025,6 +1025,14 @@ export default {
       } else {
         this.forest.normalizedOptions = [];
       }
+
+      if (this.trigger.searchQuery && !this.clearOnSelect) {
+        if (this.async) {
+          this.handleRemoteSearch();
+        } else {
+          this.handleLocalSearch();
+        }
+      }
     },
 
     getInstanceId() {
@@ -1438,7 +1446,9 @@ export default {
         () => entry.options,
         () => {
           // TODO: potential redundant re-initialization.
-          if (this.trigger.searchQuery === searchQuery) this.initialize();
+          if (this.trigger.searchQuery === searchQuery) {
+            this.initialize();
+          }
         },
         { deep: true }
       );
