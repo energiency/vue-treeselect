@@ -50,6 +50,15 @@
           </td>
         </tr>
         <tr>
+          <td><strong>isChecakble</strong></td>
+          <td class="type">Boolean</td>
+          <td>
+            Used to make item checkable. See
+            <a href="#checkable-item-selection">here</a> for detailed
+            information.
+          </td>
+        </tr>
+        <tr>
           <td><strong>isNew</strong></td>
           <td class="type">Boolean</td>
           <td>Used for giving new nodes a different color.</td>

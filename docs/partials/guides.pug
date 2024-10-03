@@ -94,6 +94,11 @@
     Set `flattenSearchResults: true` to flatten the tree when searching. With this option set to `true`, only the results that match will be shown. With this set to `false` (default), its ancestors will also be displayed, even if they would not individually be included in the results.
   +demo('FlattenSearchResults')
 
++subsection('Checkable Item Selection')
+  :markdown-it
+    You can make item checkable by setting `isCheckable: true` on any leaf node or branch node.
+  +demo('CheckableItemSelection')
+
 +subsection('Disable Item Selection')
   :markdown-it
     You can disable item selection by setting `isDisabled: true` on any leaf node or branch node. For non-flat mode, setting on a branch node will disable all its descendants as well.
