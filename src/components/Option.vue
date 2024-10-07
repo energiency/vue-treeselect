@@ -76,6 +76,9 @@ const renderCheckboxContainer = (h, context, children) => {
   if (instance.disableBranchNodes && node.isBranch) {
     return null;
   }
+  if (!node.isCheckable) {
+    return null;
+  }
 
   return <div class="vue-treeselect__checkbox-container">{children}</div>;
 };

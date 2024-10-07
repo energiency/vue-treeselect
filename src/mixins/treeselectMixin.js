@@ -1687,6 +1687,7 @@ export default {
           const isDisabled =
             !!node.isDisabled ||
             (!this.flat && !isRootNode && parentNode.isDisabled);
+          const isCheckable = node.isCheckable ?? true;
           const isNew = !!node.isNew;
           const lowerCased = this.matchKeys.reduce(
             (prev, key) => ({
@@ -1717,6 +1718,7 @@ export default {
           this.$set(normalized, "lowerCased", lowerCased);
           this.$set(normalized, "nestedSearchLabel", nestedSearchLabel);
           this.$set(normalized, "isDisabled", isDisabled);
+          this.$set(normalized, "isCheckable", isCheckable);
           this.$set(normalized, "isNew", isNew);
           this.$set(normalized, "isMatched", false);
           this.$set(normalized, "isHighlighted", false);
@@ -1962,7 +1964,7 @@ export default {
     },
 
     select(node) {
-      if (this.disabled || node.isDisabled) {
+      if (this.disabled || node.isDisabled || !node.isCheckable) {
         return;
       }
 
