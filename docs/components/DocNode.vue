@@ -50,7 +50,7 @@
           </td>
         </tr>
         <tr>
-          <td><strong>isChecakble</strong></td>
+          <td><strong>isCheckable</strong></td>
           <td class="type">Boolean</td>
           <td>
             Used to make item checkable. See
