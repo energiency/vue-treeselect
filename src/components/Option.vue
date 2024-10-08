@@ -35,7 +35,7 @@ const handleMouseDownOnLabelContainer = (context) =>
   onLeftClick(function handleMouseDownOnLabelContainer() {
     const { instance, node } = parseContext(context);
 
-    if (node.isBranch && instance.disableBranchNodes) {
+    if (node.isBranch && (instance.disableBranchNodes || !node.isCheckable)) {
       instance.toggleExpanded(node);
     } else {
       instance.select(node);
