@@ -46,6 +46,16 @@ export default {
         )} for detailed information.`,
       },
       {
+        name: "before-value",
+        props: "-",
+        description: `Slot showed before value container`,
+      },
+      {
+        name: "after-value",
+        props: "-",
+        description: `Slot showed after value container`,
+      },
+      {
         name: "before-list",
         props: "-",
         description: `Slot showed before the menu list.`,

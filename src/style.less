@@ -350,9 +350,11 @@
  */
 
 .vue-treeselect__control {
-  .row();
-
-  height: @treeselect-control-height;
+  .horizontal-padding(@treeselect-padding);
+  display: flex;
+  width: 100%;
+  align-items: center;
+  min-height: @treeselect-control-height;
   border: @treeselect-control-border-width solid
     @treeselect-control-border-color;
   border-radius: @treeselect-control-border-radius;
@@ -425,7 +427,6 @@
   right: 0;
   bottom: 0;
   left: 0;
-  line-height: @treeselect-control-inner-height;
   user-select: none;
   pointer-events: none;
 }
@@ -541,7 +542,6 @@
 
 .vue-treeselect__multi-value-label {
   padding-right: @treeselect-multi-value-padding-x;
-  white-space: pre-line;
   user-select: none;
 }
 
