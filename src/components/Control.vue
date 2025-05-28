@@ -55,6 +55,19 @@ export default {
   },
 
   methods: {
+    renderBeforeValue() {
+      const { instance } = this;
+      const beforeValueRenderer = instance.$scopedSlots["before-value"];
+
+      return beforeValueRenderer ? beforeValueRenderer() : null;
+    },
+    renderAfterValue() {
+      const { instance } = this;
+      const afterValueRenderer = instance.$scopedSlots["after-value"];
+
+      return afterValueRenderer ? afterValueRenderer() : null;
+    },
+
     renderX() {
       const { instance } = this;
       const title = instance.multiple
@@ -151,9 +164,11 @@ export default {
         class="vue-treeselect__control"
         onMousedown={instance.handleMouseDown}
       >
+        {this.renderBeforeValue()}
         <ValueContainer ref="value-container" />
         {this.renderX()}
         {this.renderArrow()}
+        {this.renderAfterValue()}
       </div>
     );
   },
